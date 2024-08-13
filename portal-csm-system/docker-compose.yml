@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  csm-backend:
+    image: postgres:16.3
+    container_name: csm-database
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: postgres
+    ports: 
+      - "5432:5432"
+    volumes:
+      - csm-database:/var/lib/postgresql/data
+    networks:
+      - csm-network
+volumes:
+  csm-database:
+networks:
+  csm-network:
+    driver: bridge
